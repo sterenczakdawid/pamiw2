@@ -1,0 +1,21 @@
+<!-- <form (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Wpisz miasto</mat-label>
+    <input type="text" matInput [(ngModel)]="city" name="city" autocomplete="off">
+
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</form> -->
+
+<mat-form-field appearance="fill">
+  <mat-label>Wyszukaj miejscowość</mat-label>
+  <input type="text" [formControl]="control" matInput [matAutocomplete]="auto" (keydown.enter)="onEnter()">
+  <mat-icon matSuffix>
+    search
+  </mat-icon>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelect($event)">
+    <mat-option *ngFor="let option of options$ | async" [value]="option?.LocalizedName">
+      {{option?.LocalizedName}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
