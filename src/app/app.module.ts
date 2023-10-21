@@ -5,15 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './modules/search/search.component';
-import { ContentComponent } from './modules/content/content.component';
+// import { ContentComponent } from './modules/content/content.component';
 
 @NgModule({
-  declarations: [AppComponent, ContentComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SearchComponent
+    SearchComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

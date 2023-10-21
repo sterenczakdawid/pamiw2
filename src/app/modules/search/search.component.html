@@ -1,12 +1,3 @@
-<!-- <form (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Wpisz miasto</mat-label>
-    <input type="text" matInput [(ngModel)]="city" name="city" autocomplete="off">
-
-    <mat-icon matSuffix>search</mat-icon>
-  </mat-form-field>
-</form> -->
-
 <mat-form-field appearance="fill">
   <mat-label>Wyszukaj miejscowość</mat-label>
   <input type="text" [formControl]="control" matInput [matAutocomplete]="auto" (keydown.enter)="onEnter()">
@@ -19,3 +10,33 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+<ng-container *ngIf="city">
+  <h2> {{ city.LocalizedName }}</h2>
+  <div *ngIf="temperature">
+    <p>Aktualna temperatura: {{temperature}}°C</p>
+  </div>
+  <div *ngIf="temperatureOneHour">
+    <p>Temperatura za godzinę: {{temperatureOneHour}}°C</p>
+  </div>
+  <div *ngIf="temperature12Hours">
+    <p>Temperatura za 12 godzin: {{temperature12Hours}}°C</p>
+  </div>
+  <div *ngIf="temperatureTomorrow">
+    <p>Temperatura jutro: {{temperatureTomorrow}}°C</p>
+  </div>
+  <div *ngIf="temperature5Days">
+    <p>Temperatura za 5 dni: {{temperature5Days}}°C</p>
+  </div>
+  <div *ngIf="temperatureYesterday">
+    <p>Temperatura wczoraj: {{temperatureYesterday}}°C</p>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="!city">
+  <ng-template #chooseCity>
+    <h2>
+      Wybierz miasto by znaleźć informacje
+    </h2>
+  </ng-template>
+</ng-container>
